@@ -16,8 +16,8 @@ function compare(t, stat) {
   var copy = clone(stat)
 
   t.deepEqual(stat, copy, 'clone has equal properties')
-  t.ok(stat instanceof fs.Stats, 'original is an fs.Stat')
-  t.ok(copy instanceof fs.Stats, 'copy is an fs.Stat')
+  t.ok(stat instanceof fs.Stats, 'original is an fs.Stats')
+  t.ok(Object.getPrototypeOf(copy) === Object.getPrototypeOf(stat), 'copy has the same prototype as an fs.Stats')
 
   ;['isDirectory'
   , 'isFile'
